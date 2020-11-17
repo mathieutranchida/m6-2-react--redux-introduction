@@ -1,17 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 import { Icon } from "react-icons-kit";
 import { close } from "react-icons-kit/ikons/close";
 
+import { removeItem } from "../actions";
+
 const CartItem = ({ item }) => {
   console.log(item);
+  const dispatch = useDispatch();
   return (
     <>
       <Wrapper>
         <Main>
           <Title>{item.title}</Title>
-          <Icon icon={close} size={20} />
+          <Icon
+            icon={close}
+            size={20}
+            onClick={() => dispatch(removeItem(item))}
+          />
         </Main>
         <Second>
           <Quantity>Quantity:</Quantity>

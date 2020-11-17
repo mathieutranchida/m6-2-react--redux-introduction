@@ -8,6 +8,18 @@ import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
+  console.log(storeItems);
+
+  // const totalOfItems = useSelector((state) => {
+  //   const itemValues = Object.values(state);
+  //   let total = itemValues.reduce((acc, cur) => {
+  //     acc + cur + cur.price;
+  //     return acc;
+  //   }, 0);
+  //   console.log(itemValues);
+  //   return total;
+  // });
+
   return (
     <Wrapper>
       <Main>
@@ -23,7 +35,7 @@ const Cart = () => {
       </Main>
       <Footer>
         <Total>
-          Total: <strong>$10.00</strong>
+          Total: <strong>$0.00</strong>
         </Total>
         <ButtonWrapper>
           <Button>Purchase</Button>
