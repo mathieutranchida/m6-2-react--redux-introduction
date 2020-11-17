@@ -34,6 +34,8 @@ const Wrapper = styled.div`
 const ShopWrapper = styled.div`
   flex: 4;
   position: relative;
+  height: 100vh;
+  overflow: scroll;
 `;
 
 const Header = styled.header`

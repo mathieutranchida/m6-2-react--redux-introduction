@@ -8,17 +8,19 @@ import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
-  console.log(storeItems);
 
-  // const totalOfItems = useSelector((state) => {
-  //   const itemValues = Object.values(state);
-  //   let total = itemValues.reduce((acc, cur) => {
-  //     acc + cur + cur.price;
-  //     return acc;
-  //   }, 0);
-  //   console.log(itemValues);
-  //   return total;
-  // });
+  const totalOfItems = useSelector((state) => {
+    const itemValues = Object.values(state);
+    let total = itemValues.reduce((acc, cur) => {
+      return acc + cur.price;
+    }, 0);
+    return total;
+  });
+
+  const formattedTotal = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(totalOfItems / 100);
 
   return (
     <Wrapper>
@@ -35,7 +37,7 @@ const Cart = () => {
       </Main>
       <Footer>
         <Total>
-          Total: <strong>$0.00</strong>
+          Total: <strong>{formattedTotal}</strong>
         </Total>
         <ButtonWrapper>
           <Button>Purchase</Button>
@@ -71,13 +73,16 @@ const SubTitle = styled.p`
   font-size: 10pt;
 `;
 
-const CartItemWrapper = styled.div``;
+const CartItemWrapper = styled.div`
+  height: 70vh;
+  overflow: scroll;
+`;
 
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px 35px 20px;
+  padding: 20px 20px 35px 20px;
 `;
 
 const Total = styled.div`
